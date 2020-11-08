@@ -49,7 +49,7 @@ class TestCalc:
     calc = Calculator()
 
     # test add
-    @pytest.mark.run(order=3)
+    @pytest.mark.run(order=1)
     @pytest.mark.parametrize('a, b, expect', get_datas()[0], ids=get_datas()[1])
     def test_add(self, a, b, expect):
         result = self.calc.add(a, b)
@@ -63,21 +63,21 @@ class TestCalc:
         assert round(result, 3) == expect
 
     # test multi
-    @pytest.mark.run(order=4)
+    @pytest.mark.run(order=3)
     @pytest.mark.parametrize('a, b, expect', get_datas()[4], ids=get_datas()[5])
     def test_multi(self, a, b, expect):
         result = self.calc.multi(a, b)
         assert result == expect
 
     # test div
-    @pytest.mark.run(order=1)
+    @pytest.mark.run(order=4)
     @pytest.mark.parametrize('a, b, expect', get_datas()[6], ids=get_datas()[7])
     def test_div(self, a, b, expect):
         result = self.calc.div(a, b)
         assert result == expect
 
     # test zero divider exception by div
-    @pytest.mark.run(order=-2)
+    @pytest.mark.run(order=-1)
     @pytest.mark.parametrize('a, b, expect', get_datas()[8], ids=get_datas()[9])
     def test_div_zero_b(self, a, b, expect):
         with pytest.raises(ZeroDivisionError):
